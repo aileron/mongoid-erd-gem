@@ -189,8 +189,8 @@ class MongoidErd
 
   def output 
     g = Rviz::Graph.new @config[:title], {rankdir: 'LR', dpi: 300}
-
     @models.each do |mname, model|
+      next unless mname
       g.add_record(model.name.camelize, model.attrs)
       g.node(model.name.camelize).add_row(model.title, true)
       model.fields.each do |field|
